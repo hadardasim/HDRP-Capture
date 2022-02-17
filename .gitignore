@@ -1,0 +1,60 @@
+#unity generated files
+
+*.tmp
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.csproj
+*.userprefs
+*.sln
+#visual studio
+.vs/
+*.suo
+.vscode/
+
+# Unity specific
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+Logs/
+Assets/AssetStoreTools*
+
+#files
+ISI_Unity/Isi_sim_api.txt
+ISI_Unity/Unity_results.xml
+ISI_Unity/unityPluginLog*
+ISI_Unity/unityPluginLog.txt
+ISI_Unity/Assets/Plugins/isi_sim_api_x64.dll
+ISI_Unity/Assets/Plugins/isi_sim_api_x64.dll.meta
+
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+ProjectSettings/Packages/com.unity.progrids/Settings.json
+UserSettings/EditorUserSettings.asset
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+#Builds
+*.apk
+*.unitypackage
+
+[merge]
+tool = unityyamlmerge
+[mergetool "unityyamlmerge"]
+trustExitCode = false
+cmd = 'C:\Program Files\Unity\Editor\Data\Tools\UnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
+#ignore build files
+SimAPI\ plugin/x64/
+SimAPI\ plugin/SP_Plugin/x64/
+SimAPI\ plugin/Plugin_Test/x64/
+SimAPI\ plugin/dvSimKitCore/x64/
+/ISI_Unity/ProjectSettings/EditorBuildSettings.asset
+UserSettings/EditorUserSettings.asset
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+unityPluginLog.txt
+Assets/Intuitive/Shaders/UnityURPUnlitScreenSpaceDecalShader
