@@ -445,6 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 788370299}
   - component: {fileID: 788370300}
+  - component: {fileID: 788370301}
   m_Layer: 0
   m_Name: Custom Pass
   m_TagString: Untagged
@@ -493,17 +494,56 @@ MonoBehaviour:
     - rid: 1821377803064705025
       type: {class: MyFullScreenCustomPass, ns: , asm: Assembly-CSharp}
       data:
-        m_Name: Custom Pass
+        m_Name: My Full Screen Custom Pass
         enabled: 1
         targetColorBuffer: 0
         targetDepthBuffer: 0
         clearFlags: 0
         passFoldout: 0
         m_Version: 0
+        renderTexture: {fileID: 8400000, guid: 9f922f845ce3a9a43bf63dcff9f87ddf, type: 2}
         fullScreenMaterial: {fileID: 2100000, guid: 7b10acbee481e6e43b02f1c3ee3727de,
           type: 2}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
+--- !u!114 &788370301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788370298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  fadeRadius: 0
+  priority: 0
+  customPasses:
+  - rid: 1821377803064705026
+  injectionPoint: 3
+  m_TargetCamera: {fileID: 0}
+  useTargetCamera: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 1821377803064705026
+      type: {class: SaveTextureToFile, ns: , asm: Assembly-CSharp}
+      data:
+        m_Name: CustomPassSaveToFile
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        renderTexture: {fileID: 8400000, guid: 9f922f845ce3a9a43bf63dcff9f87ddf, type: 2}
+        baseDir: c:\temp\shuky\
+        startFrame: 10
+        captureCount: 10
+        captureFormat: 0
 --- !u!1001 &1090955255
 PrefabInstance:
   m_ObjectHideFlags: 0

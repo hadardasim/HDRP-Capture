@@ -35,16 +35,14 @@ class MyFullScreenCustomPass : CustomPass
 
         if (fullScreenMaterial != null)
         {
-            if (Time.frameCount % 2 == 0)
+            if (Time.frameCount % 3 == 0)
                 CoreUtils.DrawFullScreen(ctx.cmd, fullScreenMaterial);            
         }
 
         ctx.cmd.Blit(rt, ctx.cameraColorBuffer, scale, offset);
 
         if (renderTexture == null)
-            RenderTexture.ReleaseTemporary(rt);
-
-        //Graphics.Blit(tempRT, ctx.cameraColorBuffer, scale, offset);
+            RenderTexture.ReleaseTemporary(rt);        
     }
 
     protected override void Cleanup()
