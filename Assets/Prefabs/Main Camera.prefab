@@ -203,7 +203,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   volumeAnchorOverride: {fileID: 0}
-  antialiasing: 2
+  antialiasing: 0
   SMAAQuality: 2
   dithering: 1
   stopNaNs: 0
@@ -320,5 +320,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d510fb6c42ac77418eb951f11fbbd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveFrameCounter: 5
-  moveOffset: {x: 4, y: 0, z: 0}
