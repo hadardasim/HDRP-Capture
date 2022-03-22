@@ -360,6 +360,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveFrameCounter: 5
   moveOffset: {x: 4, y: 0, z: 0}
+--- !u!4 &315833268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5847562791393443492, guid: eadbf3df790152d45a2c79c585435bc5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1174081282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &787720475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -429,6 +435,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99e294b824d0d7640a5e80e3ce180c34, type: 3}
+--- !u!1 &788370298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788370299}
+  - component: {fileID: 788370300}
+  m_Layer: 0
+  m_Name: Custom Pass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788370299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788370298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 315833268}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &788370300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788370298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  fadeRadius: 0
+  priority: 0
+  customPasses:
+  - rid: 1821377803064705025
+  injectionPoint: 2
+  m_TargetCamera: {fileID: 0}
+  useTargetCamera: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 1821377803064705025
+      type: {class: MyFullScreenCustomPass, ns: , asm: Assembly-CSharp}
+      data:
+        m_Name: Custom Pass
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        fullScreenMaterial: {fileID: 2100000, guid: 7b10acbee481e6e43b02f1c3ee3727de,
+          type: 2}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
 --- !u!1001 &1090955255
 PrefabInstance:
   m_ObjectHideFlags: 0
