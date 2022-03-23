@@ -9,6 +9,8 @@ class MyFullScreenCustomPass : CustomPass
     public Material fullScreenMaterial = null;
     public Vector2 scale = new Vector2(1, 1);
     public Vector2 offset = new Vector2(0, 0);
+    public bool blitToCameraBuffer = false;
+    public int drawEveryFrames = 1;
     // It can be used to configure render targets and their clear state. Also to create temporary render target textures.
     // When empty this render pass will render to the active camera render target.
     // You should never call CommandBuffer.SetRenderTarget. Instead call <c>ConfigureTarget</c> and <c>ConfigureClear</c>.
@@ -35,11 +37,12 @@ class MyFullScreenCustomPass : CustomPass
 
         if (fullScreenMaterial != null)
         {
-            if (Time.frameCount % 3 == 0)
+            if (Time.frameCount % drawEveryFrames == 0)
                 CoreUtils.DrawFullScreen(ctx.cmd, fullScreenMaterial);            
         }
 
-        ctx.cmd.Blit(rt, ctx.cameraColorBuffer, scale, offset);        
+        if (blitToCameraBuffer)
+            ctx.cmd.Blit(rt, ctx.cameraColorBuffer, scale, offset);        
 
         if (renderTexture == null)
             RenderTexture.ReleaseTemporary(rt);        
