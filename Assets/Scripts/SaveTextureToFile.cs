@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering;
 using UnityEngine.Experimental.Rendering;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.IO;
 
 class SaveTextureToFile : CustomPass
 {
@@ -9,6 +12,8 @@ class SaveTextureToFile : CustomPass
     public string baseDir = @"c:\temp\shuky\";
     public int startFrame = 10;
     public int captureCount = 10;
+
+    float realStartTime = 0.0f;
 
     public enum CaptureFormat
     {
@@ -25,6 +30,18 @@ class SaveTextureToFile : CustomPass
         // Setup code here
     }
 
+    List<Task> saveTasks = new List<Task>();    
+    private static async Task SaveExr(Texture2D _tex, string _fileName)
+    {
+        await Task.Yield();
+        byte[] bytes = _tex.EncodeToEXR(Texture2D.EXRFlags.OutputAsFloat);
+        await Task.Yield();
+        using (var DestinationWriter = File.Create(_fileName))
+        {
+            await DestinationWriter.WriteAsync(bytes);            
+        }
+    }
+
     protected override void Execute(CustomPassContext ctx)
     {
         // Executed every frame for all the camera inside the pass volume.
@@ -35,9 +52,14 @@ class SaveTextureToFile : CustomPass
         int frameNum = Time.frameCount;
         if (frameNum < startFrame)
             return;
-        if (frameNum - startFrame > captureCount)
+        int relativeFramesCount = frameNum - startFrame;
+        if (relativeFramesCount > captureCount)
             return;
+
+        if (Time.frameCount == startFrame)
+            realStartTime = Time.realtimeSinceStartup;
         
+        // Not sure this is really needed, but it doesn't seem to affect performance and it looks safer to do this
         Graphics.CreateGraphicsFence(GraphicsFenceType.AsyncQueueSynchronisation, SynchronisationStageFlags.AllGPUOperations);
         var rt = renderTexture;
         Vector2Int size = ctx.cameraColorBuffer.referenceSize;
@@ -55,22 +77,28 @@ class SaveTextureToFile : CustomPass
         tex.ReadPixels(new Rect(0, 0, size.x, size.y), 0, 0);
 
         if (captureFormat == CaptureFormat.EXR)
-        {
-            byte[] bytes = tex.EncodeToEXR(Texture2D.EXRFlags.OutputAsFloat);
-            System.IO.File.WriteAllBytes(baseDir + frameNum.ToString("00000") + ".exr", bytes);
+        {            
+            var _fileName = baseDir + frameNum.ToString("00000") + ".exr";            
+            var newTask = SaveExr(tex, _fileName);            
+            saveTasks.Add(newTask);
         }
         else
         {
             byte[] bytes = tex.EncodeToPNG();
-            System.IO.File.WriteAllBytes(baseDir + frameNum.ToString("00000") + ".png", bytes);
+            File.WriteAllBytes(baseDir + frameNum.ToString("00000") + ".png", bytes);
         }
         
 
         RenderTexture.active = org;
+
+        if (relativeFramesCount == captureCount)
+        {
+            Debug.Log($"Captured {relativeFramesCount} in {Time.realtimeSinceStartup - realStartTime} seconds");
+        }
     }
 
     protected override void Cleanup()
-    {
-        // Cleanup code
+    {        
+        //Task.WaitAll(saveTasks);      
     }
 }
