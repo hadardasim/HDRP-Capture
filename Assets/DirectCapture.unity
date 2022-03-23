@@ -360,12 +360,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveFrameCounter: 5
   moveOffset: {x: 4, y: 0, z: 0}
+--- !u!1 &315833267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7645603594703603348, guid: eadbf3df790152d45a2c79c585435bc5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1174081282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &315833268 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5847562791393443492, guid: eadbf3df790152d45a2c79c585435bc5,
     type: 3}
   m_PrefabInstance: {fileID: 1174081282}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &315833269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315833267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c902fefadb1632b4db5b08e2eaa8fca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &787720475
 PrefabInstance:
   m_ObjectHideFlags: 0
