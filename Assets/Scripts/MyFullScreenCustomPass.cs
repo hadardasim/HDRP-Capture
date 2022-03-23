@@ -24,8 +24,8 @@ class MyFullScreenCustomPass : CustomPass
             return;
         // Executed every frame for all the camera inside the pass volume.
         // The context contains the command buffer to use to enqueue graphics commands.
-        RenderTexture rt = null;
-        if (renderTexture == null)
+        RenderTexture rt = renderTexture;
+        if (rt == null)
         {
             RenderTextureDescriptor desc = new RenderTextureDescriptor(1280, 1024, RenderTextureFormat.ARGB32, 0);
             rt = RenderTexture.GetTemporary(desc);            
@@ -39,7 +39,7 @@ class MyFullScreenCustomPass : CustomPass
                 CoreUtils.DrawFullScreen(ctx.cmd, fullScreenMaterial);            
         }
 
-        ctx.cmd.Blit(rt, ctx.cameraColorBuffer, scale, offset);
+        ctx.cmd.Blit(rt, ctx.cameraColorBuffer, scale, offset);        
 
         if (renderTexture == null)
             RenderTexture.ReleaseTemporary(rt);        
