@@ -34,7 +34,7 @@ class SaveTextureToFile : CustomPass
     private static async Task SaveExr(Texture2D _tex, string _fileName)
     {
         await Task.Yield();
-        byte[] bytes = _tex.EncodeToEXR(Texture2D.EXRFlags.OutputAsFloat);
+        byte[] bytes = _tex.EncodeToEXR(Texture2D.EXRFlags.None);
         await Task.Yield();
         using (var DestinationWriter = File.Create(_fileName))
         {
