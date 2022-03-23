@@ -39,12 +39,19 @@ class SaveTextureToFile : CustomPass
             return;
 
         Graphics.CreateGraphicsFence(GraphicsFenceType.AsyncQueueSynchronisation, SynchronisationStageFlags.AllGPUOperations);
+        var rt = renderTexture;
+        Vector2Int size = ctx.cameraColorBuffer.referenceSize;
+        if (rt == null)
+        {
+            rt = ctx.cameraColorBuffer;             
+        } else
+            size = new Vector2Int(renderTexture.width, renderTexture.height);
 
         var org = RenderTexture.active;
-        RenderTexture.active = renderTexture;
-
-        Texture2D tex = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.ARGB32, false);
-        tex.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        RenderTexture.active = rt;
+        
+        Texture2D tex = new Texture2D(size.x, size.y, TextureFormat.ARGB32, false);
+        tex.ReadPixels(new Rect(0, 0, size.x, size.y), 0, 0);
 
         if (captureFormat == CaptureFormat.EXR)
         {
