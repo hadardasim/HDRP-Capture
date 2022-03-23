@@ -37,7 +37,7 @@ class SaveTextureToFile : CustomPass
             return;
         if (frameNum - startFrame > captureCount)
             return;
-
+        
         Graphics.CreateGraphicsFence(GraphicsFenceType.AsyncQueueSynchronisation, SynchronisationStageFlags.AllGPUOperations);
         var rt = renderTexture;
         Vector2Int size = ctx.cameraColorBuffer.referenceSize;
@@ -49,8 +49,9 @@ class SaveTextureToFile : CustomPass
 
         var org = RenderTexture.active;
         RenderTexture.active = rt;
-        
-        Texture2D tex = new Texture2D(size.x, size.y, TextureFormat.ARGB32, false);
+
+        TextureFormat texFormat = (captureFormat == CaptureFormat.PNG) ? TextureFormat.ARGB32 : TextureFormat.RGBAFloat;
+        Texture2D tex = new Texture2D(size.x, size.y, texFormat, false);
         tex.ReadPixels(new Rect(0, 0, size.x, size.y), 0, 0);
 
         if (captureFormat == CaptureFormat.EXR)

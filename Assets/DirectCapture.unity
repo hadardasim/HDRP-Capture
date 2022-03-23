@@ -503,6 +503,7 @@ MonoBehaviour:
   priority: 0
   customPasses:
   - rid: 1821377803064705025
+  - rid: 1821377803064705027
   injectionPoint: 2
   m_TargetCamera: {fileID: 0}
   useTargetCamera: 0
@@ -512,7 +513,7 @@ MonoBehaviour:
     - rid: 1821377803064705025
       type: {class: MyFullScreenCustomPass, ns: , asm: Assembly-CSharp}
       data:
-        m_Name: My Full Screen Custom Pass
+        m_Name: My Full Screen Custom Color Pass
         enabled: 1
         targetColorBuffer: 0
         targetDepthBuffer: 0
@@ -524,6 +525,25 @@ MonoBehaviour:
           type: 2}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
+        blitToCameraBuffer: 0
+        drawEveryFrames: 3
+    - rid: 1821377803064705027
+      type: {class: MyFullScreenCustomPass, ns: , asm: Assembly-CSharp}
+      data:
+        m_Name: Custom Depth copy Pass
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        renderTexture: {fileID: 8400000, guid: ae11adf80b1301947b7d1b1e32553b80, type: 2}
+        fullScreenMaterial: {fileID: 2100000, guid: f42f16bcf2b9f034db11f28973e6ca64,
+          type: 2}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+        blitToCameraBuffer: 0
+        drawEveryFrames: 1
 --- !u!114 &788370301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +561,7 @@ MonoBehaviour:
   priority: 0
   customPasses:
   - rid: 1821377803064705026
-  injectionPoint: 3
+  injectionPoint: 2
   m_TargetCamera: {fileID: 0}
   useTargetCamera: 0
   references:
@@ -557,11 +577,11 @@ MonoBehaviour:
         clearFlags: 0
         passFoldout: 0
         m_Version: 0
-        renderTexture: {fileID: 8400000, guid: 9f922f845ce3a9a43bf63dcff9f87ddf, type: 2}
+        renderTexture: {fileID: 8400000, guid: ae11adf80b1301947b7d1b1e32553b80, type: 2}
         baseDir: c:\temp\shuky\
         startFrame: 10
         captureCount: 10
-        captureFormat: 0
+        captureFormat: 1
 --- !u!1001 &1090955255
 PrefabInstance:
   m_ObjectHideFlags: 0
