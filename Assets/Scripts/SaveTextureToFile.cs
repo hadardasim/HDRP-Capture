@@ -72,7 +72,7 @@ class SaveTextureToFile : CustomPass
         var org = RenderTexture.active;
         RenderTexture.active = rt;
 
-        TextureFormat texFormat = (captureFormat == CaptureFormat.PNG) ? TextureFormat.ARGB32 : TextureFormat.RGBAFloat;
+        TextureFormat texFormat = (captureFormat == CaptureFormat.PNG) ? TextureFormat.ARGB32 : TextureFormat.RFloat;
         Texture2D tex = new Texture2D(size.x, size.y, texFormat, false);
         tex.ReadPixels(new Rect(0, 0, size.x, size.y), 0, 0);
 
