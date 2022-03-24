@@ -17,12 +17,7 @@ public class CameraHandler : MonoBehaviour
         
         if (captureCamera == null)
             captureCamera = GetComponent<Camera>();
-    }
-
-    
-    void Update()
-    {        
-    }
+    }      
 
     private void LateUpdate()
     {
